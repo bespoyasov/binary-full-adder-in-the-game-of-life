@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 6 | Binary Full Adder in the Game of Life</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <main>
+    <h1>Logic Gates: NOT</h1>
+
+    <form action="" id="inputs">
+      <label>
+        Input (0 or 1)
+        <input type="number" name="input" min="0" max="1" value="0">
+      </label>
+      <button type="submit">Build Gate</button>
+    </form>
+
+    <div class="canvas">
+      <span style="position: absolute; top: -20px;">Input</span>
+      <span style="position: absolute; top: -20px; left: 80px;">Inverter</span>
+      <span style="position: absolute; bottom: -20px; left: 280px;">Output</span>
+      <canvas width="600" height="400" id="canvas"></canvas>
+    </div>
+
+    <footer>
+      <a href="../index.html">&larr; Main Post</a>
+    </footer>
+  </main>
+
+  <script type="module">
+    import { Drawer } from "../dom/drawer.js";
+    import { World } from "../life/world.js";
+    import { not } from '../gates/not.js';
+
+    const searchParams = new URLSearchParams(window.location.search);
+    const input = Number(searchParams.get('input')) ?? 0
+    document.querySelector('[name="input"]').value = input
+
+    const gridKernel = 2;
+    const reproductionTime = 10;
+    const population = not(input)
+
+    const drawer = new Drawer(gridKernel);
+    const world = new World(drawer.rows, drawer.columns, population);
+
+    function liveGeneration() {
+      drawer.reset({ grid: false });
+      drawer.drawWorld(world);
+      world.evolve();
+    }
+
+    (function gameLoop() {
+      liveGeneration();
+      setTimeout(() => window.requestAnimationFrame(gameLoop), reproductionTime);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 3 | Binary Full Adder in the Game of Life</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <main>
+    <h1>Patterns: Gliders Collision</h1>
+    <canvas width="600" height="400" id="canvas"></canvas>
+
+    <footer>
+      <a href="../index.html">&larr; Main Post</a>
+    </footer>
+  </main>
+
+  <script type="module">
+    import { Drawer } from "../dom/drawer.js";
+    import { World } from "../life/world.js";
+    import { glider } from '../life/population/patterns/glider.js';
+    import { withSettings } from '../composition/with-settings.js';
+    import { composePatterns } from '../composition/composer.js'
+
+    const gridKernel = 10;
+    const reproductionTime = 100;
+
+    const glider1 = {pattern: withSettings(glider) }
+    const glider2 = {
+      pattern: withSettings(glider, {reflect: true}),
+      offset: {x: 20, y: 1}
+    }
+
+    const population = composePatterns([glider1, glider2])
+    const drawer = new Drawer(gridKernel);
+    const world = new World(drawer.rows, drawer.columns, population);
+
+    function liveGeneration() {
+      drawer.reset();
+      drawer.drawWorld(world);
+      world.evolve();
+    }
+
+    (function gameLoop() {
+      liveGeneration();
+      setTimeout(() => window.requestAnimationFrame(gameLoop), reproductionTime);
+    })();
+  </script>
+</body>
+</html>

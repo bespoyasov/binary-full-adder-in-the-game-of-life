@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary Full Adder in the Game of Life</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Binary Full Adder in the Game of Life</h1>
+    <p>The circuit underneath adds 2-but values. To add 2 numbers input them in the fields below. Each field accepts either "00", "01", "10", or "11" string. The circuit will calculate the sum and the carry for each bit.</p>
+    <p>Gliders are used as signals. To generate the glider flow we use Gosper glider gun with the period of 60. More about game of life, its patterns, and details of this circuit you can find in the post about circuit creation:</p>
+    <ul>
+      <li>🇷🇺 <a href="/blog/binary-full-adder-in-game-of-life">Пишем двоичный сумматор в игре «Жизнь»</a></li>
+      <li>🇬🇧 <a href="#">Let's Write a Binary Full Adder in the Game of Life</a></li>
+    </ul>
+
+    <form action="" id="settings">
+      <label>
+        <span>Input Signal A</span>
+        <input type="text" name="a" placeholder="01" value="01">
+      </label>
+      <label>
+        <span>Input Signal B</span>
+        <input type="text" name="b" placeholder="11" value="11">
+      </label>
+      <label>
+        <span>Evolution Speed</span>
+        <input type="number" name="speed" placeholder="1" value="1" min="1" max="20">
+      </label>
+      <button>Build Circuit</button>
+    </form>
+
+    <div class="canvas">
+      <form action="" class="runtime">
+        <label>
+          Show Circuit Scheme
+          <input type="checkbox" name="circuit">
+        </label>
+
+        <label>
+          Canvas Scale
+          <input type="range" name="scale" value="1" min="0.2" max="1" step="0.1">
+        </label>
+      </form>
+
+      <canvas id="canvas" width="1200" height="1600"></canvas>
+    </div>
+
+    <section>
+      <h2>Circuit Creation: Step by Step</h2>
+      <ol>
+        <li><a href="./steps/1.html">Game of Life Basics</a></li>
+        <li><a href="./steps/2.html">Patterns: Glider</a></li>
+        <li><a href="./steps/3.html">Patterns: Gliders Collision</a></li>
+        <li><a href="./steps/4.html">Patterns: Gosper Glider Gun</a></li>
+        <li><a href="./steps/5.html">Patterns: Gosper Glider Gun with the Period of 60</a></li>
+        <li><a href="./steps/6.html">Logic Gates: NOT</a></li>
+        <li><a href="./steps/7.html">Logic Gates: AND</a></li>
+        <li><a href="./steps/8.html">Logic Gates: OR</a></li>
+        <li><a href="./steps/9.html">Logic Gates: XOR</a></li>
+        <li><a href="./steps/10.html">Binary Half Adder</a></li>
+      </ol>
+    </section>
+  </main>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

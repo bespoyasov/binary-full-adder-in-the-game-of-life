@@ -1,0 +1,49 @@
+* {
+  font-family: sans-serif;
+}
+
+h1,
+p {
+  max-width: 600px;
+}
+
+form {
+  margin: 40px 0;
+}
+
+label {
+  display: block;
+}
+
+canvas {
+  border: 1px solid;
+  transform: scale(var(--scale));
+  transform-origin: top left;
+}
+
+canvas.mapped {
+  background-image: url(./images/circuit.png);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 1202px;
+}
+
+.canvas {
+  position: relative;
+  --scale: 1;
+}
+
+.runtime {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 5px;
+  z-index: 1;
+}
+
+.half-adder {
+  background-image: url(./images/half-adder.png);
+  background-repeat: no-repeat;
+  background-position: 45px -7px;
+  background-size: 588px;
+}
