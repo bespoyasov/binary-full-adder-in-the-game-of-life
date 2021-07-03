@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Step 7 | Binary Full Adder in the Game of Life</title>
+  <title>Step 8 | Binary Full Adder in the Game of Life</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <main>
-    <h1>Logic Gates: AND</h1>
+    <h1>Logic Gates: OR</h1>
 
     <form action="" id="inputs">
       <label>
@@ -25,20 +25,21 @@
     <div class="canvas">
       <span style="position: absolute; top: -20px;">A</span>
       <span style="position: absolute; top: -20px; left: 260px;">B</span>
-      <span style="position: absolute; top: -20px; left: 425px;">Clock</span>
-      <span style="position: absolute; bottom: -20px; left: 350px;">Output</span>
+      <span style="position: absolute; top: 180px; left: 0;">Clock</span>
+      <span style="position: absolute; top: -20px; left: 425px;">Inverter</span>
+      <span style="position: absolute; bottom: -20px; left: 270px;">Output</span>
       <canvas width="600" height="400" id="canvas"></canvas>
     </div>
 
     <footer>
-      <a href="../index.html">&larr; Main Post</a>
+      <a href="../index.html">&larr; Main Page</a>
     </footer>
   </main>
 
   <script type="module">
     import { Drawer } from "../dom/drawer.js";
     import { World } from "../life/world.js";
-    import { and } from '../gates/and.js';
+    import { or } from '../gates/or.js';
 
     const searchParams = new URLSearchParams(window.location.search);
     const a = Number(searchParams.get('a')) ?? 0
@@ -49,7 +50,7 @@
 
     const gridKernel = 2;
     const reproductionTime = 10;
-    const population = and(a, b)
+    const population = or(a, b)
 
     const drawer = new Drawer(gridKernel);
     const world = new World(drawer.rows, drawer.columns, population);

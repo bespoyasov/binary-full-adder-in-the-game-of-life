@@ -3,31 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Step 5 | Binary Full Adder in the Game of Life</title>
+  <title>Step 1 | Binary Full Adder in the Game of Life</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <main>
-    <h1>Patterns: Gosper Glider Gun with the Period of 60</h1>
+    <h1>Game of Life Basics</h1>
     <canvas width="600" height="400" id="canvas"></canvas>
 
     <footer>
-      <a href="../index.html">&larr; Main Post</a>
+      <a href="../index.html">&larr; Main Page</a>
     </footer>
   </main>
 
   <script type="module">
     import { Drawer } from "../dom/drawer.js";
     import { World } from "../life/world.js";
-    import { gliderGunP60 } from '../life/population/patterns/glider-gun-p60.js';
-    import { fromPseudoGraphics } from '../composition/from-pseudo-graphics.js';
+    import { populateRandom } from '../life/population/random.js'
 
-    const gridKernel = 5;
-    const reproductionTime = 10;
-    const population = fromPseudoGraphics(gliderGunP60)
+    const gridKernel = 10;
+    const reproductionTime = 100;
 
     const drawer = new Drawer(gridKernel);
-    const world = new World(drawer.rows, drawer.columns, population);
+    const world = new World(drawer.rows, drawer.columns, populateRandom(40, 60));
 
     function liveGeneration() {
       drawer.reset();
