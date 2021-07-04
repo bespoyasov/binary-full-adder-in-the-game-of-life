@@ -47,3 +47,8 @@ canvas.mapped {
   background-position: 45px -7px;
   background-size: 588px;
 }
+
+.full-adder {
+  background-image: url(./images/full-adder.png);
+  background-repeat: no-repeat;
+}
