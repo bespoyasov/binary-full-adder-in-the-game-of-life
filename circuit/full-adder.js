@@ -20,11 +20,6 @@ const gunCarry0 = withSettings(gliderGunP60, {
   reflect: true,
 });
 
-const gunCarry1 = withSettings(gliderGunP60, {
-  rotate: 270,
-  reflect: true,
-});
-
 const collector = withSettings(eater);
 
 const redirectLeft = withSettings(reflector, {
@@ -41,24 +36,19 @@ const redirectForward = withSettings(reflector, {
   phase: 1,
 });
 
-const halfSum0 = (a, b) => jumpToPhase(halfAdder(a, b, { collectCarry: false }), 27);
-const halfSum1 = (a, b) =>
+const halfSum = (a, b) =>
   jumpToPhase(halfAdder(a, b, { collectSum: false, collectCarry: false }), 56);
 
-export function fullAdder(a = "11", b = "11") {
-  const [a0, a1] = toBits(a);
-  const [b0, b1] = toBits(b);
-
-  // Represent input signals as 2 pairs of corresponding bits:
-  const bit0 = { pattern: halfSum0(a0, b0), offset: { x: 514, y: 16 } };
-  const bit1 = { pattern: halfSum1(a1, b1), offset: { x: -4, y: 118 } };
+export function fullAdder(a = 0, b = 0, carry = 0) {
+  const inputSum = { pattern: halfSum(a, b), offset: { x: -4, y: 118 } };
+  const carry0 = carry ? { pattern: gunCarry0, offset: { x: 801, y: 600 } } : null;
 
   // Split each signal in 2:
   const splitCarry0 = { pattern: divide(), offset: { x: 801, y: 600 } };
   const splitCarry1 = { pattern: divide(), offset: { x: 464, y: 555 } };
 
   // XOR 1st bit sum with 0th bit carry to get the final 1st bit sum:
-  const sum1 = { pattern: xor(), offset: { x: 596, y: 738 } };
+  const sumOut = { pattern: xor(), offset: { x: 596, y: 738 } };
   const collector1 = { pattern: collector, offset: { x: 753, y: 997 } };
 
   // Redirect signals to avoid crossings:
@@ -72,13 +62,13 @@ export function fullAdder(a = "11", b = "11") {
   const carryOut = { pattern: or(), offset: { x: 892, y: 1312 } };
 
   return composePatterns([
-    bit0,
-    bit1,
+    carry0,
+    inputSum,
 
     splitCarry0,
     splitCarry1,
 
-    sum1,
+    sumOut,
     collector1,
 
     divertLeft,
