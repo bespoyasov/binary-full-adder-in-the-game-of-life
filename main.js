@@ -7,14 +7,14 @@ import { Drawer } from "./dom/drawer.js";
 import { World } from "./life/world.js";
 
 import { halfAdder } from "./circuit/half-adder.js";
-import { fullAdder } from "./circuit/full-adder.js";
+import { adder } from "./circuit/two-bit-adder.js";
 
 const { a, b, speed } = extractSignalValues();
 updateFormValues(a, b, speed);
 handleRuntimeUpdates();
 
 const drawer = new Drawer(settings.GRID_KERNEL);
-const world = new World(drawer.rows, drawer.columns, fullAdder(a, b));
+const world = new World(drawer.rows, drawer.columns, adder(a, b));
 
 function liveGeneration() {
   drawer.reset({ grid: false });
@@ -25,5 +25,8 @@ function liveGeneration() {
 (function gameLoop() {
   liveGeneration();
 
-  setTimeout(() => window.requestAnimationFrame(gameLoop), settings.REPRODUCTION_TIME);
+  setTimeout(
+    () => window.requestAnimationFrame(gameLoop),
+    settings.REPRODUCTION_TIME
+  );
 })();
