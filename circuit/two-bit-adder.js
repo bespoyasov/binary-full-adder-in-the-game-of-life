@@ -15,16 +15,6 @@ import { divide } from "../gates/split.js";
 
 import { halfAdder } from "./half-adder.js";
 
-const gunCarry0 = withSettings(gliderGunP60, {
-  rotate: 270,
-  reflect: true,
-});
-
-const gunCarry1 = withSettings(gliderGunP60, {
-  rotate: 270,
-  reflect: true,
-});
-
 const collector = withSettings(eater);
 
 const redirectLeft = withSettings(reflector, {
