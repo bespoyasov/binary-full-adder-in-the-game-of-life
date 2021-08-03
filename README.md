@@ -9,4 +9,4 @@ To add 2 numbers input them in the fields below. Each field accepts either "00",
 Gliders are used as signals. To generate the glider flow we use Gosper glider gun with the period of 60. More about game of life, its patterns, and details of this circuit you can find in the post about circuit creation:
 
 - 🇷🇺 [Пишем двоичный сумматор в игре «Жизнь»](https:/bespoyasov.ru/blog/binary-adder-in-game-of-life)
-- 🇬🇧 [Let's Write a Binary Full Adder in the Game of Life](/)
+- 🇬🇧 [Let's Write a Binary Full Adder in the Game of Life](https://dev.to/bespoyasov/let-s-write-a-binary-adder-in-the-game-of-life-3of5)
