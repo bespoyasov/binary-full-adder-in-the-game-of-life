@@ -10,3 +10,8 @@ Gliders are used as signals. To generate the glider flow we use Gosper glider gu
 
 - 🇷🇺 [Пишем двоичный сумматор в игре «Жизнь»](https://bespoyasov.ru/blog/binary-adder-in-the-game-of-life/)
 - 🇬🇧 [Let's Write a Binary Full Adder in the Game of Life](https://dev.to/bespoyasov/let-s-write-a-binary-adder-in-the-game-of-life-3of5)
+
+And the results:
+
+- [Final app](https://bespoyasov.ru/showcase/game-of-life/)
+- [Creation steps](https://bespoyasov.ru/showcase/game-of-life/steps/)
